@@ -1,6 +1,19 @@
 const compose = (...functions) => data =>
   functions.reduceRight((value, func) => func(value), data)
 
+function attrsToString( obj = {}) {
+  const keys = Object.keys(obj);
+  const attrs = [];
+  for (let i = 0; i < keys.length; i++){
+    let attr = keys[i];
+    attrs.push(`${attr}=${obj[attr]}`);
+  }
+  const string = attrs.join('');
+  return string;
+}
+
+  const tag = (t) => content => `<${t}>${content}</${t}>`
+
 let $btn = document.querySelector('#btn');
 let description = $('#description');
 let calories = $('#calories');
